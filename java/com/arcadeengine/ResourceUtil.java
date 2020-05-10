@@ -18,14 +18,12 @@ public abstract class ResourceUtil {
 	/**
 	 * Get a BufferedImage from an image within the classpath
 	 *
-	 * @param packageName
 	 * @param fileName
 	 * @return
 	 */
-	public static BufferedImage loadInternalImage(String packageName, String fileName) {
+	public static BufferedImage loadInternalImage(String fileName) {
 		try {
-			String pathName = packageName.replaceAll("\\.", "/") + "/" + fileName;
-			URL path = ClassLoader.getSystemClassLoader().getResource(pathName);
+			URL path = ClassLoader.getSystemClassLoader().getResource(fileName);
 			return ImageIO.read(path);
 		}
 		catch (IllegalArgumentException e) {
@@ -36,7 +34,7 @@ public abstract class ResourceUtil {
 		}
 
 
-		System.out.println("Image File: '" + fileName + "' was not found in package '" + packageName + "'");
+		System.out.println("Image File: '" + fileName + "' was not found in package '" + fileName + "'");
 
 		return ResourceUtil.getNullImage();
 	}
@@ -129,7 +127,7 @@ public abstract class ResourceUtil {
 	public static AudioInputStream loadClip(String packageName, String fileName) {
 		try {
 			String pathName = packageName.replaceAll("\\.", "/") + "/" + fileName;
-			URL path = ClassLoader.getSystemClassLoader().getResource(pathName);
+			URL path = ClassLoader.getSystemClassLoader().getResource(fileName);
 			return AudioSystem.getAudioInputStream(path);
 		} catch (Exception e) {
 			e.printStackTrace();
