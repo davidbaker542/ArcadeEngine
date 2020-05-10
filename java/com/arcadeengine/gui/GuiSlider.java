@@ -7,7 +7,7 @@ import java.awt.geom.*;
 import java.util.*;
 
 public class GuiSlider extends GuiComponent {
-	private Image handleImage = ResourceUtil.loadInternalImage("com.arcadeengine.res", "sliderHandle.png");
+	private Image handleImage = ResourceUtil.loadInternalImage("gui/sliderHandle.png");
 	private Rectangle handle = new Rectangle(handleImage.getWidth(null), handleImage.getHeight(null)), boxOutline, boxFill, bar;
 
 	private double scale, valueLimit = 10, value;
